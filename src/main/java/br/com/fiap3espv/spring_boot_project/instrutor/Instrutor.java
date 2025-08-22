@@ -3,6 +3,7 @@ package br.com.fiap3espv.spring_boot_project.instrutor;
 import br.com.fiap3espv.spring_boot_project.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@EqualsAndHashCode(of="id")
 public class Instrutor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +28,8 @@ public class Instrutor {
     Endereco endereco;
 
     public Instrutor(DadosCadastroInstrutor dados){
+        @Id
+        @GeneratedValue()
         this.nome = dados.nome();
         this.email = dados.email();
         this.cnh = dados.cnh();

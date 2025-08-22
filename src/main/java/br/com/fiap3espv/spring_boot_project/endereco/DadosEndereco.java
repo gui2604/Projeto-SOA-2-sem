@@ -1,12 +1,21 @@
 package br.com.fiap3espv.spring_boot_project.endereco;
 
-public record DadosEndereco(String logradouro,
-                            String numero,
-                            String bairro,
-                            String cidade,
-                            String complemento,
-                            String uf,
-                            String cep) {
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
+public record DadosEndereco(
+        @NotBlank
+        String logradouro,
+        String numero,
+        @NotBlank
+        String bairro,
+        @NotBlank
+        String cidade,
+        String complemento,
+        String uf,
+        @NotBlank
+        @Pattern(regexp="\\d{8}")
+        String cep) {
 
 }
 
